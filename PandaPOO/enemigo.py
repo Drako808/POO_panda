@@ -1,5 +1,5 @@
 from mob import mob
-from panda import panda
+import random
 
 class enemigo:
     
@@ -8,4 +8,14 @@ class enemigo:
         
     def recibir_dano(self): 
         self = 0
-   
+        
+    def crear(self):
+        pass     
+
+    def spawn_enemy(min_x, max_x, min_y, max_y):
+        x = random.randint(min_x, max_x)
+        y = random.randint(min_y, max_y)
+        enemy = Enemy( damage=10, speed=5)
+        # Set the enemy's position to the random x,y location
+        enemy.position = (x, y)
+        return enemy
