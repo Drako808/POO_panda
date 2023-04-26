@@ -1,12 +1,11 @@
-from mob import mob
+import mob
 import random
 
 class enemigo:
     
-    def _init_(self):
+    def __init__(self):
         self = mob
         
-    def crear(posicionY, posicionEnRama, rama):
-        posicionY = random.randint(0, 100)
-        posicionEnRama = random.randint(1, 3)
-        rama = random.randint(0, 1)
+    def die():
+        score += 1
+        del self

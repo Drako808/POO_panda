@@ -1,6 +1,8 @@
+import main
+
 class mob:
     
-    def _init_(self, posicionY, rama, posicionEnRama):
+    def __init__(self, posicionY, rama, posicionEnRama):
         self.posicionY = posicionY
         self.rama = rama
         self.posicionEnRama = posicionEnRama
@@ -14,4 +16,4 @@ class mob:
             moverse      
             
     def recibirDano(self, posicionY, rama, posicionEnRama):
-        die()
+        self.die()

@@ -1,9 +1,9 @@
-from mob import mob
-from enemigo import enemigo
+import mob
+import enemigo
 
 class panda:
 
-    def _init_(self, atacando):   
+    def __init__(self, atacando):   
         self = mob
         atacando = bool = False                                
         
@@ -38,3 +38,6 @@ class panda:
     if self.rama == enemigo.rama and self.posicionEnRama == enemigo.PosicionEnRama and atacando is False:
         if self.posicionY - enemigo.posicionY < 0.5: 
             recibirDano() 
+            
+    def die(self):  
+        gameOver()     
