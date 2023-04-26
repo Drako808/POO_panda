@@ -2,7 +2,7 @@ import Game
 import random
 import time
 
-class game: 
+class gamemaster: 
     
     def __init__(self, score, highScore, time, highTime):
         self.score = int(0)
@@ -11,18 +11,31 @@ class game:
         self.highTime = int(0)
         
     def crearEnemigo():
-        enemigo.posicionY = random.randint(0, 100)
-        enemigo.posicionEnRama = random.randint(1, 3)
-        enemigo.rama = random.randint(0, 1)
+        #Parametros de posicion inicial del enemigo
+        enemigo.posicionY = random.randint(0 or 100)   #Si aparece arriba o abajo del escenario
+        enemigo.posicionEnbambu = random.randint(1, 3) #En cual de los tres bambus aparece 
+        enemigo.bambu = random.randint(1, 2)           #En que lado del bambu aparece
         
-
-    def gameOver(self, score, highScore, time, highTime):
+        #Si aparece hacia arriba, mirara hacia abajo, y viceversa
+        if enemigo.posicionY == 0:
+            enemigo.direccion = 0
+        if enemigo.posicionY == 100:
+            enemigo.direccion = 1
         
+    #Cuando el jugador muere, se guarda el record de puntuacion y de tiempo en caso de que lo haya y se reinicia el escenario
+    def gameOver(score, highScore, time, highTime):
+        
+        if score > highScore:
+            highScore = score
+            print: "Nuevo mayor puntaje"
+        if time > highTime:
+            highTime = time
+            print: "Nuevo mayor tiempo"
+            
+        score = 0
+        time = 0    
         del panda
         del enemigo
 
 
 
-#Calculo para recibir daño
-if panda.rama == enemigo.rama and panda.posicionEnRama == enemigo.posicionEnRama:
-    panda(recibir_dano)

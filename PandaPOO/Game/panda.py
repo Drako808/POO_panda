@@ -5,39 +5,43 @@ class panda:
 
     def __init__(self, atacando):   
         self = mob
-        atacando = bool = False                                
+        self.atacando = bool(False)                                
         
-    def moverIzquierda(rama, posicionEnRama):
-        if rama != 1 and rama == 0:       
-            rama -= 1
+    #Las funciones de movimiento horizontal del panda le permiten moverse a un lado u otro del bambu, o moverse entre bambus,
+    #pero no puede moverse a, por ejemplo, la derecha, si ya esta en el bambu de la derecha (izquierda = 1, centro = 2, derecha = 3)
+        
+    def moverIzquierda(bambu, posicionEnbambu):
+        if self.bambu != 1 and self.bambu == 0:       
+            self.bambu -= 1
             
-        if posicionEnRama == 1:
-            posicionEnRama = 0
+        if self.posicionEnbambu == 1:
+            self.posicionEnbambu = 0
     
-    def moverDerecha(rama, posicionEnRama):     
-        if rama != 3 and posicionEnRama == 1:       
-            rama += 1
+    def moverDerecha(bambu, posicionEnbambu):     
+        if self.bambu != 3 and self.posicionEnbambu == 1:       
+            self.bambu += 1
             
-        if posicionEnRama == 0:
-            posicionEnRama = 1
+        if posicionEnbambu == 0:
+            posicionEnbambu = 1
                         
-    def atacar(self, enemigo, posicionY):
+    def atacar(self, enemigo, posicionY, velocidad):
         atacando = True
-        posicionY -= 1.5
-        if self.posicionY == posicionY.enemigo + 0.3:
+        velocidad = 4.5
+        moverAbajo()
+        if self.posicionY == posicionY.enemigo + 0.9:
             enemigo(recibir_dano)        
-            
+               
     #Recibir daño desde arriba 
                           
-    if self.rama == enemigo.rama and self.posicionEnRama == enemigo.PosicionEnRama:
-        if enemigo.posicionY - self.posicionY < 0.5: 
-            recibirDano() 
+    if self.bambu == enemigo.bambu and self.posicionEnbambu == enemigo.PosicionEnbambu:
+        if enemigo.posicionY - self.posicionY < 1.5: 
+            self.recibirDano() 
 
-    #Recibir daño desde abajo          
+    #Recibir daño desde abajo, excepto si se esta realizando un ataque          
          
-    if self.rama == enemigo.rama and self.posicionEnRama == enemigo.PosicionEnRama and atacando is False:
-        if self.posicionY - enemigo.posicionY < 0.5: 
-            recibirDano() 
+    while self.bambu == enemigo.bambu and self.posicionEnbambu == enemigo.PosicionEnbambu and atacando is False:
+        if self.posicionY - enemigo.posicionY < 1.5: 
+            self.recibirDano() 
             
     def die(self):  
-        gameOver()     
+        main.gameOver()     
