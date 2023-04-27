@@ -1,10 +1,11 @@
+import main
 import mob
 import time
 
 class enemigo:
     
     def __init__(self, direccion):
-        self = mob
+        self = self.mob
         self.direccion = direccion
         
     def die(self):

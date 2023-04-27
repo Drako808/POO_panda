@@ -1,3 +1,4 @@
+import main
 import mob
 import enemigo
 
@@ -29,7 +30,7 @@ class panda:
         velocidad = 4.5
         moverAbajo()
         if self.posicionY == posicionY.enemigo + 0.9:
-            enemigo(recibir_dano)        
+            enemigo.recibir_dano()        
                
     #Recibir daño desde arriba 
                           

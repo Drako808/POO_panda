@@ -2,6 +2,8 @@ import Game
 import random
 import time
 
+#Clase principal que controla el juego y sus funciones principales, como manejar el puntaje o la creacion de enemigos
+
 class gamemaster: 
     
     def __init__(self, score, highScore, time, highTime):
@@ -36,6 +38,3 @@ class gamemaster:
         time = 0    
         del panda
         del enemigo
-
-
-
