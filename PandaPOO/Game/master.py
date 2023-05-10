@@ -1,12 +1,12 @@
-import Game
+from PandaPOO.Game import mob, enemigo, panda
 import random
 import time
 
 #Clase principal que controla el juego y sus funciones principales, como manejar el puntaje o la creacion de enemigos
 
-class gamemaster: 
+class master: 
     
-    def __init__(self, score, highScore, time, highTime):
+    def __init__(self, score, highScore, tiempo, highTime):
         self.score = int(0)
         self.highScore = int(0)
         self.time = int(0)
@@ -25,16 +25,15 @@ class gamemaster:
             enemigo.direccion = 1
         
     #Cuando el jugador muere, se guarda el record de puntuacion y de tiempo en caso de que lo haya y se reinicia el escenario
-    def gameOver(score, highScore, time, highTime):
+    def gameOver(score, highScore, tiempo, highTime):
         
         if score > highScore:
+        
             highScore = score
-            print: "Nuevo mayor puntaje"
         if time > highTime:
             highTime = time
-            print: "Nuevo mayor tiempo"
+            
             
         score = 0
-        time = 0    
-        del panda
-        del enemigo
+        tiempo = 0    
+     

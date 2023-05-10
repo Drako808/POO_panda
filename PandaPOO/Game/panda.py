@@ -1,5 +1,5 @@
-import main
-import mob
+from master import master
+from mob import mob
 import enemigo
 
 class panda:
@@ -33,10 +33,10 @@ class panda:
             enemigo.recibir_dano()        
                
     #Recibir daño desde arriba 
-                          
-    if self.bambu == enemigo.bambu and self.posicionEnbambu == enemigo.PosicionEnbambu:
-        if enemigo.posicionY - self.posicionY < 1.5: 
-            self.recibirDano() 
+    def colision(self, enemigo):                    
+        if self.bambu == enemigo.bambu and self.posicionEnbambu == enemigo.PosicionEnbambu:
+            if enemigo.posicionY - self.posicionY < 1.5: 
+                self.recibirDano() 
 
     #Recibir daño desde abajo, excepto si se esta realizando un ataque          
          
@@ -45,4 +45,4 @@ class panda:
             self.recibirDano() 
             
     def die(self):  
-        main.gameOver()     
+        master.gameOver()     
