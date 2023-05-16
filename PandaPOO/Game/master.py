@@ -35,5 +35,3 @@ class master:
             
             
         score = 0
-        tiempo = 0    
-     

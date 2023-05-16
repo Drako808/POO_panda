@@ -2,11 +2,10 @@ from master import master
 from mob import mob
 import enemigo
 
-class panda:
-
-    def __init__(self, atacando):   
-        self = mob
-        self.atacando = bool(False)                                
+class Panda(Mob):
+    def __init__(self, posicionY, bambu, posicionEnBambu, velocidad, atacando):
+        super().__init__(posicionY, bambu, posicionEnBambu, velocidad)
+        self.atacando = atacando                               
         
     #Las funciones de movimiento horizontal del panda le permiten moverse a un lado u otro del bambu, o moverse entre bambus,
     #pero no puede moverse a, por ejemplo, la derecha, si ya esta en el bambu de la derecha (izquierda = 1, centro = 2, derecha = 3)

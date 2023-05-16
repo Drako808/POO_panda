@@ -1,15 +1,14 @@
 from mob import moverAbajo
 import time
 
-class enemigo:
+class enemigo(Mob):
     
-    def __init__(self, direccion):
-        self = self.mob
-        self.direccion = direccion
+    def __init__(self):
+        super().__init__(posicionY, bambu, posicionEnBambu, velocidad)
         
     def die(self):
         del self
-    
-#Dictaminar el movimiento de los enemigos, si aparecen arriba, se
-#mueven hacia abajo, y viceversa. 
-    
+    if time.time() < 30:
+        self.velocidad = 100
+    elif time.time() < 60:
+        self.velocidad = 100 - ((time.time() - 30) / 5)
