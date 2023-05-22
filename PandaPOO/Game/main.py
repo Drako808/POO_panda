@@ -1,13 +1,16 @@
 import pygame
+from ent import Ent
+from panda import Panda
+from enemy import Enemy
 
 pygame.init()
 
 screen = pygame.display.set_mode((470, 840))
 
 pygame.display.set_caption("Panda")
-icon = pygame.image.load("PandaPOO/Assets/panda.png")
+icon = pygame.image.load("PandaPOO/Assets/Uses/panda.png")
 pygame.display.set_icon(icon)
-background_image = pygame.image.load("PandaPOO/Assets/fondo.png")
+background_image = pygame.image.load("PandaPOO/Assets/Uses/background.png")
 
 running = True
 while running == True:

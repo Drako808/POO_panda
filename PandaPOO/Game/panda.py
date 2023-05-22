@@ -1,47 +1,42 @@
-from master import master
-from mob import mob
-import enemigo
+import pygame
+from ent import Ent
+from enemy import Enemy
 
-class Panda(Mob):
-    def __init__(self, posicionY, bambu, posicionEnBambu, velocidad, atacando):
-        super().__init__(posicionY, bambu, posicionEnBambu, velocidad)
-        self.atacando = atacando                               
+class Panda(Ent):
+    def __init__(self, y, bamboo, orientation, speed, is_attacking):
+        super().__init__(y, bamboo, orientation, speed)
+        self.is_attacking = False
+        self.speed = 40
+        self.sprites = {
+            "idle_left": pygame.image.load("PandaPOO/Assets/Panda/panda_idle_left.png"),
+            "idle_right": pygame.image.load("PandaPOO/Assets/Panda/panda_idle_right.png"),
+            "up_left": pygame.image.load("PandaPOO/Assets/Panda/panda_up_left.png"),
+            "up_right": pygame.image.load("PandaPOO/Assets/Panda/panda_up_right.png"),
+            "down_left": pygame.image.load("PandaPOO/Assets/Panda/panda_down_left.png"),
+            "down_right": pygame.image.load("PandaPOO/Assets/Panda/panda_down_right.png")
+        }                               
         
-    #Las funciones de movimiento horizontal del panda le permiten moverse a un lado u otro del bambu, o moverse entre bambus,
-    #pero no puede moverse a, por ejemplo, la derecha, si ya esta en el bambu de la derecha (izquierda = 1, centro = 2, derecha = 3)
-        
-    def moverIzquierda(bambu, posicionEnbambu):
-        if self.bambu != 1 and self.bambu == 0:       
-            self.bambu -= 1
+    def move_left(self, bamboo, orientation):
+        if bamboo != 1 and bamboo == 0:       
+            bamboo -= 1
             
-        if self.posicionEnbambu == 1:
-            self.posicionEnbambu = 0
+        if orientation == 1:
+            orientation = 0
     
-    def moverDerecha(bambu, posicionEnbambu):     
-        if self.bambu != 3 and self.posicionEnbambu == 1:       
-            self.bambu += 1
+    def move_right(self, bamboo, orientation):     
+        if bamboo != 3 and orientation == 1:       
+            bamboo += 1
             
-        if posicionEnbambu == 0:
-            posicionEnbambu = 1
+        if orientation == 0:
+            orientation = 1
                         
-    def atacar(self, enemigo, posicionY, velocidad):
+    def attack(self, y, velocidad):
         atacando = True
-        velocidad = 4.5
-        moverAbajo()
-        if self.posicionY == posicionY.enemigo + 0.9:
-            enemigo.recibir_dano()        
-               
-    #Recibir daño desde arriba 
-    def colision(self, enemigo):                    
-        if self.bambu == enemigo.bambu and self.posicionEnbambu == enemigo.PosicionEnbambu:
-            if enemigo.posicionY - self.posicionY < 1.5: 
-                self.recibirDano() 
-
-    #Recibir daño desde abajo, excepto si se esta realizando un ataque          
-         
-    while self.bambu == enemigo.bambu and self.posicionEnbambu == enemigo.PosicionEnbambu and atacando is False:
-        if self.posicionY - enemigo.posicionY < 1.5: 
-            self.recibirDano() 
+        velocidad = 60
+        move_down()
+        if y == y.enemy + 0.9:
+            enemy.recibir_dano()        
+            
             
     def die(self):  
-        master.gameOver()     
+        master.game_over()     

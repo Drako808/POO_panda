@@ -1,37 +1,28 @@
-from PandaPOO.Game import mob, enemigo, panda
+import pygame
 import random
 import time
 
-#Clase principal que controla el juego y sus funciones principales, como manejar el puntaje o la creacion de enemigos
-
-class master: 
+class Master: 
     
-    def __init__(self, score, highScore, tiempo, highTime):
-        self.score = int(0)
-        self.highScore = int(0)
-        self.time = int(0)
-        self.highTime = int(0)
+    def __init__(self, score, time_passed):
+        self.score = 0
+        self.time_passed = 0
         
-    def crearEnemigo():
-        #Parametros de posicion inicial del enemigo
-        enemigo.posicionY = random.randint(0 or 100)   #Si aparece arriba o abajo del escenario
-        enemigo.posicionEnbambu = random.randint(1, 3) #En cual de los tres bambus aparece 
-        enemigo.bambu = random.randint(1, 2)           #En que lado del bambu aparece
+    def spawn_enemy(self):
+        enemy.orientation = random.randint(1, 3)  
+        enemy.bamboo = random.randint(1, 2)      
         
-        #Si aparece hacia arriba, mirara hacia abajo, y viceversa
-        if enemigo.posicionY == 0:
-            enemigo.direccion = 0
-        if enemigo.posicionY == 100:
-            enemigo.direccion = 1
-        
-    #Cuando el jugador muere, se guarda el record de puntuacion y de tiempo en caso de que lo haya y se reinicia el escenario
-    def gameOver(score, highScore, tiempo, highTime):
-        
-        if score > highScore:
-        
-            highScore = score
-        if time > highTime:
-            highTime = time
+    def check_collision(self, panda, enemy):
+        if panda.bamboo == enemy.bamboo and panda.orientation == enemy.orientation:
             
-            
-        score = 0
+            if enemy.y - panda.y < 1.5:  
+                panda.take_damage()
+                self.game_over(self.time_passed, self.score)
+                
+            elif panda.y - enemy.y < 1.5:               
+                enemy.take_damage()
+                self.score += 1
+        
+    def game_over(self, time_passed, score):
+        self.score = score
+        self.time_passed = time_passed
