@@ -14,22 +14,22 @@ class Ent:
         
     def update_coor(self, x, bamboo, orientation):
         if self.bamboo == 1 and self.orientation == 0:
-            self.x = 42
+            self.x = 51
         
         elif self.bamboo == 2 and self.orientation == 0:
-            self.x = 185
+            self.x = 168
 
         elif self.bamboo == 3 and self.orientation == 0:
-            self.x = 329
+            self.x = 286
 
         elif self.bamboo == 1 and self.orientation == 1:
-            self.x = 77
+            self.x = 106
 
         elif self.bamboo == 2 and self.orientation == 1:
-            self.x = 220
+            self.x = 223
 
         elif self.bamboo == 3 and self.orientation == 1:
-            self.x = 364
+            self.x = 340
                 
     def take_damage(self):
         pass

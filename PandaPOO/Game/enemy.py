@@ -16,4 +16,4 @@ class Enemy(Ent):
         self.y += self.speed
         
     def update_coor(self, x, bamboo, orientation):
-        super().update_coor(self, x, bamboo, orientation)
+        super().update_coor(x, bamboo, orientation)

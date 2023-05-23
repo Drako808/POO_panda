@@ -6,6 +6,7 @@ from panda import Panda
 from enemy import Enemy
 
 pygame.init()
+pygame.mixer.init()
 
 screen = pygame.display.set_mode((470, 840))
 
@@ -13,6 +14,8 @@ pygame.display.set_caption("Panda")
 icon = pygame.image.load("PandaPOO/Assets/Uses/panda.png")
 pygame.display.set_icon(icon)
 background_image = pygame.image.load("PandaPOO/Assets/Uses/background.png")
+
+bamboo_move_sound = pygame.mixer.Sound("PandaPOO/Assets/Sounds/bamboo_hit.wav")
 
 running = True
 
@@ -47,6 +50,7 @@ while running == True:
                 panda_down = False        
     
     panda.update_coor(panda.x, panda.bamboo, panda.orientation)
+    enemy.update_coor(enemy.x, enemy.bamboo, enemy.orientation) 
         
     keys = pygame.key.get_pressed()
     
@@ -61,10 +65,16 @@ while running == True:
     
     if key_pressed and frame_counter >= panda_movement_delay:
         if keys[pygame.K_LEFT] and not panda_up and not panda_down:
+            if not (panda.bamboo == 1 and panda.orientation == 0):
+                bamboo_move_sound.play()
             panda.move_left(panda.bamboo, panda.orientation)
+
         elif keys[pygame.K_RIGHT] and not panda_up and not panda_down:
+            if not (panda.bamboo == 3 and panda.orientation == 1):
+                bamboo_move_sound.play()
             panda.move_right(panda.bamboo, panda.orientation)
 
+            
         frame_counter = 0  
         key_pressed = False  
         
@@ -97,6 +107,7 @@ while running == True:
     screen.blit(background_image, (0, 0))  
     
     screen.blit(sprite, (panda.x, panda.y))
+    
                 
 
     pygame.display.flip()
