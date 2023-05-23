@@ -8,9 +8,8 @@ class Master:
         self.score = 0
         self.time_passed = 0
         
-    def spawn_enemy(self):
-        enemy.orientation = random.randint(1, 3)  
-        enemy.bamboo = random.randint(1, 2)      
+    def spawn_enemy(self, enemy):
+        printf("Spawn")
         
     def check_collision(self, panda, enemy):
         if panda.bamboo == enemy.bamboo and panda.orientation == enemy.orientation:

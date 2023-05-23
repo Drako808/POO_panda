@@ -14,8 +14,7 @@ class Panda(Ent):
             "up_right": pygame.image.load("PandaPOO/Assets/Panda/panda_up_right.png"),
             "down_left": pygame.image.load("PandaPOO/Assets/Panda/panda_down_left.png"),
             "down_right": pygame.image.load("PandaPOO/Assets/Panda/panda_down_right.png")
-        }  
-        self.current_sprite = self.sprites["idle_left"]                            
+        }                           
         
     def move_left(self, bamboo, orientation):
         if self.orientation == 0 and self.bamboo != 1:
@@ -33,11 +32,15 @@ class Panda(Ent):
             
     def move_up(self, y, speed):
         if self.y > 2:
-            self.y -= self.speed
+            super().move_up(y, speed)
 
     def move_down(self, y, speed):    
         if self.y < 752:
-            self.y += self.speed
+            super().move_down(y, speed)
+
+    def update_coor(self, x, bamboo, orientation):
+        super().update_coor(x, bamboo, orientation)
+
 
                              
     def die(self):  

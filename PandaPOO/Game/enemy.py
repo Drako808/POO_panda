@@ -6,10 +6,14 @@ class Enemy(Ent):
     
     def __init__(self, x, y, bamboo, orientation, speed):
         super().__init__(x, y, bamboo, orientation, speed)
-        self.speed = 25
+        self.speed = 4
         self.sprites = {
-            "enemy.left": pygame.image.load("PandaPOO/Assets/Enemy/enemy_left.png"),
-            "enemy.right": pygame.image.load("PandaPOO/Assets/Enemy/enemy_right.png")
+            "left": pygame.image.load("PandaPOO/Assets/Enemy/enemy_left.png"),
+            "right": pygame.image.load("PandaPOO/Assets/Enemy/enemy_right.png")
         }
         
-
+    def move_up(self, y, speed):
+        self.y += self.speed
+        
+    def update_coor(self, x, bamboo, orientation):
+        super().update_coor(self, x, bamboo, orientation)
