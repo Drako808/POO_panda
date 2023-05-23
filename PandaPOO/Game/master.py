@@ -6,8 +6,8 @@ class Master:
     
     def __init__(self, score, time_passed):
         self.score = 0
-        self.time_passed = 0
-        
+        self.time_passed = int(time_passed)
+
     def spawn_enemy(self, enemy):
         printf("Spawn")
         
