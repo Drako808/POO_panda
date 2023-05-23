@@ -31,5 +31,3 @@ class Ent:
         elif self.bamboo == 3 and self.orientation == 1:
             self.x = 340
                 
-    def take_damage(self):
-        pass

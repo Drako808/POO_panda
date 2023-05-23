@@ -1,6 +1,6 @@
-import pygame
 import random
 import time
+from enemy import Enemy
 
 class Master: 
     
@@ -9,7 +9,13 @@ class Master:
         self.time_passed = int(time_passed)
 
     def spawn_enemy(self, enemy):
-        printf("Spawn")
+        x = 0
+        y = 840
+        bamboo = random.randint(1, 3)
+        orientation = random.randint(0, 1)
+        speed = random.randint(1, 5)
+        return Enemy(x, y, bamboo, orientation, speed)
+
         
     def check_collision(self, panda, enemy):
         if panda.bamboo == enemy.bamboo and panda.orientation == enemy.orientation:
@@ -22,6 +28,3 @@ class Master:
                 enemy.take_damage()
                 self.score += 1
         
-    def game_over(self, time_passed, score):
-        self.score = score
-        self.time_passed = time_passed

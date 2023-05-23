@@ -6,7 +6,7 @@ class Panda(Ent):
     def __init__(self, x, y, bamboo, orientation, speed, is_attacking):
         super().__init__(x, y, bamboo, orientation, speed)
         self.is_attacking = False
-        self.speed = 6
+        self.speed = 8
         self.sprites = {
             "idle_left": pygame.image.load("PandaPOO/Assets/Panda/panda_idle_left.png"),
             "idle_right": pygame.image.load("PandaPOO/Assets/Panda/panda_idle_right.png"),
@@ -41,7 +41,9 @@ class Panda(Ent):
     def update_coor(self, x, bamboo, orientation):
         super().update_coor(x, bamboo, orientation)
 
-
-                             
-    def die(self):  
-        master.game_over()     
+    def attack(self, y, speed, is_attacking):
+        self.is_attacking = True
+        self.speed = 15
+        if self.y < 748:
+            super().move_down(y, speed)
+                              
