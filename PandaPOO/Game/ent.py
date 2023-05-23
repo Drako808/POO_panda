@@ -1,7 +1,8 @@
 import pygame
 
 class Ent:  
-    def __init__(self, y, bamboo, orientation, speed):
+    def __init__(self, x, y, bamboo, orientation, speed):
+        self.x = x
         self.y = y 
         self.bamboo = bamboo                        
         self.orientation = orientation     
