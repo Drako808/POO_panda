@@ -13,7 +13,7 @@ class Master:
         y = 840
         bamboo = random.randint(1, 3)
         orientation = random.randint(0, 1)
-        speed = random.randint(1, 5)
+        speed = random.randint(1, 8)
         return Enemy(x, y, bamboo, orientation, speed)
 
         

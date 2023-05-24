@@ -1,3 +1,6 @@
+#Inicialización del código
+
+import os
 import pygame
 import random
 from tkinter import messagebox
@@ -11,7 +14,8 @@ pygame.mixer.init()
 
 screen = pygame.display.set_mode((470, 840))
 pygame.display.set_caption("Panda")
-icon = pygame.image.load("PandaPOO/Assets/Uses/panda.png")
+icon_path = os.path.abspath("PandaPOO/Assets/Uses/panda.png")
+icon = pygame.image.load(icon_path)
 pygame.display.set_icon(icon)
 
 background_image = pygame.image.load("PandaPOO/Assets/Uses/background.png")
@@ -20,8 +24,6 @@ bamboo_move_sound = pygame.mixer.Sound("PandaPOO/Assets/Sounds/bamboo_hit.wav")
 splat_sound = pygame.mixer.Sound("PandaPOO/Assets/Sounds/splat.wav")
 font = pygame.font.SysFont("DroidSans", 26)
 
-running = True
-
 enemies = []
 
 master = Master(0, 0)
@@ -29,12 +31,18 @@ panda = Panda(x=0, y=350, bamboo=2, orientation=0, speed=0, is_attacking=False)
 
 panda_movement_delay = 10
 key_frame_counter = 0
+
 spawn_timer = int
+
 key_pressed = False
 panda_up = False
 panda_down = False
 panda_attack = False
 
+
+#Bucle principal del juego
+
+running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -49,7 +57,7 @@ while running:
                 panda_up = False
             elif event.key == pygame.K_DOWN:
                 panda_down = False        
-            elif event.key == pygame.K_SPACE:
+            elif event.key == pygame.K_x:
                 panda.speed = 8
                 panda_down = False
                 panda.is_attacking = False
@@ -64,7 +72,7 @@ while running:
         panda.move_down(panda.y, panda.speed)
         panda_down = True        
     
-    if keys[pygame.K_SPACE]:
+    if keys[pygame.K_x]:
         panda.attack(panda.speed, panda.y, panda.is_attacking)
         panda_down = True 
     
@@ -91,7 +99,7 @@ while running:
         spawn_timer = 1
     else:
         spawn_timer = random.randint(0, 40)
-    
+     
     screen.blit(background_image, (0, 0))
     screen.blit(time_text, (5, 10))
     screen.blit(score_text, (370, 10))
@@ -142,12 +150,11 @@ while running:
                     enemies.remove(enemy)
                     master.score += 1
                 else:
-                    messagebox.showinfo("Game Over", f"Puntaje: {master.score}\n" f"Tiempo: {int(master.time_passed)}")
                     running = False
-
+                    messagebox.showinfo("Game Over", f"Puntaje: {master.score}\n" f"Tiempo: {int(master.time_passed)}")
                     
-
-    
+                    
+                    
     key_frame_counter += 1
         
     
