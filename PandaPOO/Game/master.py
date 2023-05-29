@@ -1,30 +1,22 @@
 import random
-import time
-from enemy import Enemy
+import time #Modulo de python que permite exportar funciones de tiempo del sistema.
+from enemy import Enemy #Modulo de enemigos para controlar su creacion.
 
 class Master: 
     
-    def __init__(self, score, time_passed):
+    #Sus variables incluyen el tiempo y el puntaje (revisar lineas 115-117 en main.py).
+    
+    def __init__(self, score, time_passed): 
         self.score = 0
         self.time_passed = int(time_passed)
 
+
+    #Crear enemigos con instancias aleatorias de posicion -excepto vertical- y de velocidad (revisar linea 123 en main.py).
+    
     def spawn_enemy(self, enemy):
         x = 0
         y = 840
         bamboo = random.randint(1, 3)
         orientation = random.randint(0, 1)
         speed = random.randint(1, 8)
-        return Enemy(x, y, bamboo, orientation, speed)
-
-        
-    def check_collision(self, panda, enemy):
-        if panda.bamboo == enemy.bamboo and panda.orientation == enemy.orientation:
-            
-            if enemy.y - panda.y < 1.5:  
-                panda.take_damage()
-                self.game_over(self.time_passed, self.score)
-                
-            elif panda.y - enemy.y < 1.5:               
-                enemy.take_damage()
-                self.score += 1
-        
+        return Enemy(x, y, bamboo, orientation, speed)        

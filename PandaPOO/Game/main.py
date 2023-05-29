@@ -7,10 +7,10 @@ from tkinter import messagebox #Modulo de funciones de visualizacion de elemento
 
 #Importar los modulos de las clases del juego.
 
-from master import Master #Control de las funciones basicas del juego que no afectan directamente la jugabilidad.
-from ent import Ent #Del ingles Entity (Entidad). Se refiere a los objetos "vivos" del juego.
-from panda import Panda #Jugador
-from enemy import Enemy #Enemigo
+from master import Master #Control de las funciones basicas del juego que no afectan directamente la jugabilidad (revisar master.py).
+from ent import Ent #Del ingles Entity (Entidad). Se refiere a los objetos "vivos" del juego (revisar ent.py).
+from panda import Panda #Jugador (revisar panda.py)
+from enemy import Enemy #Enemigo (revisar enemy.py)
 
 #Inicializacion de pygame y su modulo de sonido.
 
